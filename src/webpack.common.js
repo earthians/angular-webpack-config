@@ -110,9 +110,11 @@ const defaultConfig = function(options, root, settings) {
   };
 };
 
+const nodeExternals = require('webpack-node-externals');
 const serverConfig = function(root, settings) {
   return {
     target: 'node',
+    externals: [nodeExternals({whitelist : [/^@ngx-cache/]})],
 
     /**
      * The entry point for the bundle
@@ -128,13 +130,14 @@ const serverConfig = function(root, settings) {
      * See: http://webpack.github.io/docs/configuration.html#output
      */
     output: {
+      libraryTarget: 'this',
       /**
        * Specifies the name of each output file on disk.
        * IMPORTANT: You must not specify an absolute path here!
        *
        * See: http://webpack.github.io/docs/configuration.html#output-filename
        */
-      filename: 'server.js',
+      filename: 'index.js',
 
       /**
        * The filename of the SourceMaps for the JavaScript files.
@@ -142,7 +145,7 @@ const serverConfig = function(root, settings) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
        */
-      sourceMapFilename: 'server.bundle.map',
+      sourceMapFilename: 'index.bundle.map',
 
       /**
        * The filename of non-entry chunks as relative path
@@ -150,7 +153,7 @@ const serverConfig = function(root, settings) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
        */
-      chunkFilename: 'server.[id].chunk.js',
+      chunkFilename: 'index.[id].chunk.js',
 
       /**
        * The output directory as absolute path (required).
