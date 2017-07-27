@@ -47,8 +47,5 @@
     "add-asset-html-webpack-plugin": "^2.0.1",
     "optimize-js-plugin": "^0.0.4",
     "extract-text-webpack-plugin": "^2.1.2"
-  },
-  "dependencies": {
-    "webpack-node-externals": "^1.6.0"
   }
 }

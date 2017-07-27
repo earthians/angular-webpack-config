@@ -110,11 +110,9 @@ const defaultConfig = function(options, root, settings) {
   };
 };
 
-const nodeExternals = require('webpack-node-externals');
 const serverConfig = function(root, settings) {
   return {
     target: 'node',
-    externals: [nodeExternals({whitelist : [/^@ngx-cache/]})],
 
     /**
      * The entry point for the bundle
